@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hchavezS5v2.Views.vPersona"
+             Title="vPersona">
+
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Image HorizontalOptions="Center" VerticalOptions="Center" Source="crud2.jpeg"></Image>
+
+            <!-- grid1-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="lbltitulo" Grid.Row="0" Text="Base de datos" />
+                <Entry x:Name="txtPersona" Grid.Row="1" Placeholder="Ingresar persona"></Entry>
+                <Label Grid.Row="2" Text="Ingresar" />
+                <Button Grid.Row="3" Text="-----------------------------------------------------"  />
+            </Grid>
+
+            <!-- grid2 -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <!-- Para que la lista se expanda verticalmente -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!-- Para que los botones se expandan horizontalmente -->
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- botones grid2 -->
+                <Button x:Name="btnAgregar" Text="Agregar " Grid.Column="0" Grid.Row="0" Clicked="btnAgregar_Clicked" Background="Green" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="btnEditar" Text="Editar" Grid.Column="1" Grid.Row="0"  BackgroundColor="#D7D71E" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="btnEliminar" Text="Actualizar" Grid.Column="2" Grid.Row="0"   Clicked="btnEliminar_Clicked" BackgroundColor="#AD1F1F" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="lblstatus" Grid.Row="1" Grid.Column="0"/>
+                <Button x:Name="btnObtener" Grid.Row="2" Grid.Column="0" Clicked="btnObtener_Clicked" Text="Listar Personas" HorizontalOptions="FillAndExpand"/>
+                <CollectionView x:Name="listapersonas" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="#001EFF" Padding="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Id}" Grid.Column="0"/>
+                                    <Label Text="{Binding Name}" Grid.Column="1"/>
+                                    <!-- botones en los labels -->
+                                    <Button Text="Editar" Clicked="Button_Clicked" Grid.Column="2" BackgroundColor="#D7D71E" TextColor="Black"/>
+                                    <Button Text="Eliminar" Clicked="Button_Clicked_1" Grid.Column="3" BackgroundColor="#AD1F1F" TextColor="Black"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+</ContentPage>
